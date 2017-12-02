@@ -3,9 +3,10 @@
 <head>
     {% load staticfiles %}
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>AMo's Blog</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut  icon" type="image/x-icon" href="{% static 'favicon.ico' %}" media="screen"  />
 
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -29,7 +30,7 @@
         <div class="widewrapper masthead">
             <div class="container">
                 <a href="{% url 'blog:index' %}" id="logo">
-                    <img src="{% static 'img/logo.png' %}" alt="clean Blog">
+                    <img src="{% static 'img/logo.png' %}" width='204px' height='80px' alt="clean Blog">
                 </a>
 
                 <div id="mobile-nav-toggle" class="pull-right">
