@@ -32,9 +32,15 @@ class singleView(View):
             return redirect(reverse('blog:index'))
         comments = Comment.objects.filter(article_id=article_id)
         comment_count = len(comments)
+        tags = Genre.objects.all()
+        related_post = Article.objects.filter(type=article.type)
+        featured_post = Article.objects.filter(emphasis=True)
         context = {'article':article,
                    'comments':comments,
-                   'comment_count':comment_count}
+                   'comment_count':comment_count,
+                   'tags':tags,
+                   'related_post':related_post,
+                   'featured_post':featured_post}
         return render(request, 'single.html', context)
     def post(self, request, article_id):
         '''文章评论功能'''
@@ -43,6 +49,9 @@ class singleView(View):
             article = Article.objects.get(id=article_id)
         except Article.DoesNotExist:
             return redirect(reverse('blog:index'))
+        tags = Genre.objects.all()
+        related_post = Article.objects.filter(type=article.type)
+        featured_post = Article.objects.filter(emphasis=True)
         comment = request.POST.get('message')
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -53,7 +62,10 @@ class singleView(View):
             context = {'article':article,
                        'comments':comments,
                        'comment_count':comment_count,
-                       'errmsg':'数据不完整'}
+                       'errmsg':'数据不完整',
+                       'tags':tags,
+                       'related_post':related_post,
+                       'featured_post':featured_post}
             # 数据不完整
             return render(request, 'single.html', context)
         if not re.match(r'^[a-z0-9][\w.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$', email):
@@ -62,7 +74,10 @@ class singleView(View):
             context = {'article':article,
                        'comments':comments,
                        'comment_count':comment_count,
-                       'errmsg':'邮箱不合法'}
+                       'errmsg':'邮箱不合法',
+                       'tags':tags,
+                       'related_post':related_post,
+                       'featured_post':featured_post}
             return render(request, 'single.html', context)
         temp_comment = Comment(comment=comment,email=email,name=name,site=website,article=article)
         temp_comment.save()
@@ -70,7 +85,10 @@ class singleView(View):
         comment_count = len(comments)
         context = {'article':article,
                    'comments':comments,
-                   'comment_count':comment_count}
+                   'comment_count':comment_count,
+                   'tags':tags,
+                   'related_post':related_post,
+                   'featured_post':featured_post}
         return render(request, 'single.html', context)
 
 class listView(View):
