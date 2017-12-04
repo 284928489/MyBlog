@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce',# 富文本编辑器
+    'utils',
     'blog',
 )
 
@@ -108,8 +109,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # 收集静态文件后保存路径
-STATIC_ROOT = '/var/www/Myblog/static/'
-# 配置图片保存到的路径
+# STATIC_ROOT = '/var/www/Myblog/static/'
+# 配置上传的图片保存到的路径
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/media')
 
 # 富文本编辑器
@@ -118,3 +119,12 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+
+# 设置fast dfs客户端配置文件路径
+FDFS_CLIENT_CONF = '/root/MyBlog/Myblog/utils/fdfs/client.conf'
+
+# 设置fast dfs文件存储服务器上的nginx的ip和端口号
+FDFS_URL = 'http://39.104.28.74:8888/'
+
+# 设置Django默认文件存储类
+DEFAULT_FILE_STORAGE='utils.fdfs.storage.FDFSStorage'

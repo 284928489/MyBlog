@@ -25,7 +25,7 @@ class Article(models.Model):
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     digest = models.CharField(max_length=256, verbose_name='文章摘要')
     content = HTMLField(blank=True, verbose_name='文章内容')
-    path = models.ImageField(upload_to='blog/', verbose_name='文章配图')
+    path = models.ImageField(upload_to='blog', verbose_name='文章配图')
     type = models.ForeignKey('Genre', verbose_name='文章类型')
     author = models.CharField(max_length=20, verbose_name='文章作者')
     emphasis = models.BooleanField(default=False, verbose_name='重点标记')
