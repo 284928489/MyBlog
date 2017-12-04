@@ -92,7 +92,7 @@
                         <header>
                            
                             <div class="lead-image">
-			        <img src="{% static 'media/' %}{{ article.path }}" alt="" class="img-responsive">
+			        <img src="{{ article.path.url }}" alt="" class="img-responsive">
                             </div>
                         </header>
                         <div class="body">
