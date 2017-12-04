@@ -109,9 +109,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # 收集静态文件后保存路径
-# STATIC_ROOT = '/var/www/Myblog/static/'
+STATIC_ROOT = '/var/www/Myblog/static/'
 # 配置上传的图片保存到的路径
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/media')
+#MEDIA_ROOT = os.path.join(BASE_DIR,'static/media')
 
 # 富文本编辑器
 TINYMCE_DEFAULT_CONFIG = {
