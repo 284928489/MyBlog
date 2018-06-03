@@ -184,6 +184,18 @@
                     </aside>
                 </div>
                 <aside class="col-md-4 blog-aside">
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Tags</h3>
+                        </header>
+                        <div class="body clearfix">
+                            <ul class="tags">
+                                {% for tag in tags %}
+                                <li><a href="{% url 'blog:list' tag.id %}">{{ tag.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                     
                     <div class="aside-widget">
                         <header>
@@ -211,18 +223,6 @@
                         </div>
                     </div>
 
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Tags</h3>
-                        </header>
-                        <div class="body clearfix">
-                            <ul class="tags">
-                                {% for tag in tags %}
-                                <li><a href="{% url 'blog:list' tag.id %}">{{ tag.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
                 </aside>
             </div>
         </div>

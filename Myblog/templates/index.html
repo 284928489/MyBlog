@@ -88,7 +88,7 @@
                                 <header>
                                     <img src="{{ article.path.url }}" alt="">
                                     <h3><a href="{% url 'blog:single' article.id %}">{{ article.title }}</a></h3>
-                                    <span class="meta">{{ article.create_time }}</span>
+                                    <span class="meta">{{ article.update_time }}</span>
                                     <hr>
                                 </header>
                                 <div class="body">
@@ -109,7 +109,7 @@
                                 <header>
                                     <img src="{{ article.path.url }}" alt="">
                                     <h3><a href="{% url 'blog:single' article.id %}">{{ article.title }}</a></h3>
-                                    <span class="meta">{{ article.create_time }}</span>
+                                    <span class="meta">{{ article.update_time }}</span>
                                     <hr>
                                 </header>
                                 <div class="body">
@@ -128,6 +128,18 @@
                     </div>
                 </div>
                 <aside class="col-md-4 blog-aside">
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Tags</h3>
+                        </header>
+                        <div class="body clearfix">
+                            <ul class="tags">
+                                {% for tag in tags %}
+                                <li><a href="{% url 'blog:list' tag.id %}">{{ tag.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                     
                     <div class="aside-widget">
                         <header>
@@ -155,18 +167,6 @@
                         </div>
                     </div>
 
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Tags</h3>
-                        </header>
-                        <div class="body clearfix">
-                            <ul class="tags">
-                                {% for tag in tags %}
-                                <li><a href="{% url 'blog:list' tag.id %}">{{ tag.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
                 </aside>
             </div>
         </div>
